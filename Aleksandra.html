@@ -1,0 +1,1340 @@
+﻿<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alhemija Konverzacije: Tvoj 21-dnevni Vodič za Bolju Komunikaciju - za Aleksandru</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* :: SRŽ TRANSFORMACIJE :: Definicija palete i osnovne geometrije za Aleksandru. */
+        :root {
+            --crna-pozadina: #000000; /* Glavna pozadina */
+            --tamno-siva: #1a1a1a;    /* Sekundarna tamna pozadina, za kartice i detalje */
+            --tekst-boja-svetla: #fdfdfd; /* Svetli tekst na tamnoj pozadini */
+            --roze-primarno: #FF69B4; /* Deep Pink */
+            --roze-tamno: #C71585;    /* Medium Violet Red */
+            --roze-svetlo: #FFB6C1;   /* Light Pink */
+            --roze-sjaj: rgba(255, 105, 180, 0.5); /* Pink glow */
+            --font-naslov: 'Orbitron', sans-serif;
+            --font-tijelo: 'Inter', sans-serif;
+        }
+
+        /* :: NULTO STANJE :: Resetovanje materijalne ravni za ulazak u višu dimenziju. */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* :: BOŽANSKO TELO :: Osnova postojanja. Svetlost, cistota i roze-zlatni sjaj. */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--crna-pozadina);
+            color: var(--tekst-boja-svetla);
+            font-family: var(--font-tijelo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative; /* For pseudo-elements */
+        }
+        
+        /* Cosmic background effect - adapted for dark theme with pink glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(255, 105, 180, 0.08) 0%, transparent 30%),
+                        radial-gradient(circle at bottom right, rgba(199, 21, 133, 0.08) 0%, transparent 30%);
+            z-index: -1;
+            animation: cosmicFade 15s infinite alternate;
+        }
+
+        @keyframes cosmicFade {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Subtle starfield effect - adapted for dark theme with pink stars */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="0.5" fill="%23FFB6C1" /><circle cx="30" cy="50" r="0.8" fill="%23FFB6C1" /><circle cx="70" cy="20" r="0.6" fill="%23FFB6C1" /><circle cx="90" cy="80" r="0.7" fill="%23FFB6C1" /><circle cx="50" cy="90" r="0.5" fill="%23FFB6C1" /></svg>') repeat;
+            background-size: 100px 100px;
+            opacity: 0.15; /* Slightly more visible stars on dark background */
+            animation: twinkle 20s infinite alternate;
+            z-index: -2;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(1.01); }
+        }
+        
+        /* Custom styles for Aleksandra Lekcije */
+        .aleksandra-bg { background-color: transparent; } /* Changed to transparent to show body background */
+        .aleksandra-main-text { color: var(--roze-svetlo); font-family: var(--font-naslov); text-shadow: 0 0 8px var(--roze-sjaj); } /* Brighter pink text for headings */
+        .aleksandra-secondary-text { color: var(--tekst-boja-svetla); font-family: var(--font-tijelo); }
+        .aleksandra-accent { color: var(--roze-primarno); }
+        .aleksandra-accent-bg { background-color: var(--roze-primarno); }
+        .aleksandra-card-bg { 
+            background: linear-gradient(145deg, var(--tamno-siva), var(--crna-pozadina)); /* Dark gradient for cards */
+            border-color: var(--roze-tamno); 
+        }
+        .aleksandra-card-border { border-color: var(--roze-tamno); }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            transform-origin: left;
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
+            font-weight: 500;
+            color: var(--tekst-boja-svetla); /* Light text for nav links */
+        }
+        .nav-link:hover {
+            background-color: var(--tamno-siva); /* Darker hover background */
+            color: var(--roze-svetlo); /* Brighter pink on hover */
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3); /* Darker shadow */
+        }
+        .nav-link.active {
+            background-color: var(--roze-primarno);
+            color: var(--crna-pozadina); /* Dark text on pink active background */
+            font-weight: 700;
+            box-shadow: 0 4px 18px 0 var(--roze-sjaj);
+            transform: scale(1.03);
+        }
+        
+        /* Sidebar specific styles */
+        #sidebar {
+            background: linear-gradient(180deg, var(--crna-pozadina) 0%, var(--tamno-siva) 100%);
+            border-right: 1px solid var(--roze-tamno);
+            box-shadow: 5px 0 20px rgba(0,0,0,0.2); /* Stronger shadow */
+        }
+        #sidebar h1 {
+            font-family: var(--font-naslov);
+            font-weight: 700;
+            color: var(--roze-svetlo);
+            text-shadow: 0 0 5px var(--roze-sjaj);
+        }
+        #sidebar p {
+            font-family: var(--font-tijelo);
+            color: var(--tekst-boja-svetla);
+        }
+
+        .daily-content {
+            animation: fadeIn 0.8s ease-in-out;
+            /* Ensure the main content area is dark */
+            background-color: var(--crna-pozadina); 
+            padding: 2rem; /* Add some padding for content inside */
+            border-radius: 15px; /* Rounded corners for the content area */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .aleksandra-ritual-card {
+            background: linear-gradient(135deg, var(--tamno-siva) 0%, var(--crna-pozadina) 100%);
+            border-left: 4px solid var(--roze-primarno);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .aleksandra-ritual-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        details > summary {
+            cursor: pointer;
+            padding: 0.75rem 0;
+            font-weight: 600;
+            color: var(--roze-primarno); /* Pink for summary titles */
+            list-style: none;
+            position: relative;
+            border-bottom: 1px solid var(--roze-tamno); /* Darker pink line */
+            margin-bottom: 0.5rem;
+            font-family: var(--font-naslov);
+            transition: color 0.3s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+            color: var(--roze-primarno);
+        }
+        details[open] > summary::after {
+            content: '-';
+            transform: translateY(-50%) rotate(0deg);
+        }
+        details[open] > summary {
+            color: var(--roze-svetlo); /* Brighter pink when open */
+        }
+        
+        .message-box {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--roze-tamno);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-family: var(--font-tijelo);
+        }
+        .message-box.show {
+            opacity: 1;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4); /* More pronounced lift and shadow */
+        }
+        
+        /* General heading and text styles */
+        h2, h3, h4, h5 {
+            font-family: var(--font-naslov);
+            color: var(--roze-svetlo);
+            text-shadow: 0 0 5px var(--roze-sjaj);
+        }
+        p, ul, ol, li {
+            font-family: var(--font-tijelo);
+            color: var(--tekst-boja-svetla);
+        }
+        strong {
+            color: var(--roze-primarno); /* Make strong text stand out */
+        }
+
+        /* Styling for Emojis */
+        .daily-emoji {
+            font-size: 4rem; /* Adjust as needed for main emojis */
+            display: block;
+            margin: 1.5rem auto; /* Centered with margin */
+            text-align: center;
+        }
+        .sub-daily-emoji {
+            font-size: 3rem; /* Smaller for submodules */
+            display: block;
+            margin: 1rem auto;
+            text-align: center;
+        }
+
+        /* Progress Bar Styling */
+        .progress-container {
+            width: 100%;
+            background-color: var(--tamno-siva);
+            border-radius: 10px;
+            height: 20px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border: 1px solid var(--roze-tamno);
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--roze-tamno), var(--roze-primarno));
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+            box-shadow: 0 0 10px var(--roze-sjaj);
+        }
+
+        /* Mark as Complete Button */
+        .complete-button {
+            background-color: var(--roze-primarno);
+            color: var(--crna-pozadina);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .complete-button:hover {
+            background-color: var(--roze-svetlo);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .complete-button.completed {
+            background-color: #4CAF50; /* Green for completed */
+            color: white;
+            cursor: default;
+            opacity: 0.8;
+        }
+        .complete-button.completed:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Textarea for notes */
+        .daily-notes {
+            width: 100%;
+            min-height: 120px;
+            background-color: var(--tamno-siva);
+            border: 1px solid var(--roze-tamno);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--tekst-boja-svetla);
+            font-family: var(--font-tijelo);
+            resize: vertical;
+            margin-top: 1rem;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        /* Reset Button */
+        .reset-button {
+            background-color: #DC2626; /* Red for reset */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .reset-button:hover {
+            background-color: #EF4444; /* Lighter red on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            #sidebar {
+                width: 250px;
+            }
+            main {
+                padding: 1rem;
+            }
+            h2 {
+                font-size: 2.2rem;
+            }
+            .grid-cols-1, .lg:grid-cols-3, .xl:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            .daily-content {
+                padding: 1rem; /* Adjust padding for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body class="aleksandra-bg">
+
+    <div class="flex min-h-screen">
+        <aside id="sidebar" class="w-64 shadow-lg p-6 fixed top-0 left-0 h-full overflow-y-auto transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
+            <div class="text-center mb-10">
+                <h1 class="text-2xl font-bold aleksandra-main-text">Alhemija Konverzacije</h1>
+                <p class="text-sm aleksandra-secondary-text">Tvoj 21-dnevni Vodič</p>
+            </div>
+            <nav id="navigation" class="space-y-2">
+                 <a href="#dashboard" data-target="dashboard" class="nav-link flex items-center p-3 rounded-lg active">
+                    <span class="text-lg mr-3">👋</span> Dobrodošlica
+                </a>
+                <a href="#day-1" data-target="day-1" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">👂</span> Dan 1: Aktivno Slušanje
+                </a>
+                <a href="#day-2" data-target="day-2" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">❓</span> Dan 2: Postavljanje Pravih Pitanja
+                </a>
+                <a href="#day-3" data-target="day-3" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🗣️</span> Dan 3: Jasan i Koncizan Govor
+                </a>
+                <a href="#day-4" data-target="day-4" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">👁️‍🗨️</span> Dan 4: Govor Tela i Neverbalna Komunikacija
+                </a>
+                <a href="#day-5" data-target="day-5" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">😊</span> Dan 5: Osmeh i Kontakt Očima
+                </a>
+                <a href="#day-6" data-target="day-6" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🧠</span> Dan 6: Proširivanje Opšteg Znanja
+                </a>
+                <a href="#day-7" data-target="day-7" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🔄</span> Dan 7: Vežbe Parafraziranja
+                </a>
+                <a href="#day-8" data-target="day-8" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🚫</span> Dan 8: Izbegavanje Monologa
+                </a>
+                <a href="#day-9" data-target="day-9" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">❤️</span> Dan 9: Empatija i Razumevanje Perspektive
+                </a>
+                <a href="#day-10" data-target="day-10" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">⏱️</span> Dan 10: Tajming i Pauze
+                </a>
+                <a href="#day-11" data-target="day-11" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🤫</span> Dan 11: Prevazilaženje Tišine
+                </a>
+                <a href="#day-12" data-target="day-12" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">😂</span> Dan 12: Humor i Lakoća
+                </a>
+                <a href="#day-13" data-target="day-13" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">📖</span> Dan 13: Pričanje Priča
+                </a>
+                <a href="#day-14" data-target="day-14" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🎯</span> Dan 14: Fokus na Sagovornika
+                </a>
+                <a href="#day-15" data-target="day-15" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🤝</span> Dan 15: Izgradnja Raporta
+                </a>
+                <a href="#day-16" data-target="day-16" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🚫</span> Dan 16: Izbegavanje Negativnosti
+                </a>
+                <a href="#day-17" data-target="day-17" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">✨</span> Dan 17: Autentičnost
+                </a>
+                <a href="#day-18" data-target="day-18" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🧘‍♀️</span> Dan 18: Svesnost i Prisutnost
+                </a>
+                <a href="#day-19" data-target="day-19" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">📈</span> Dan 19: Praćenje Napretka
+                </a>
+                <a href="#day-20" data-target="day-20" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">👂</span> Dan 20: Prihvatanje Povratnih Informacija
+                </a>
+                <a href="#day-21" data-target="day-21" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🚀</span> Dan 21: Kontinuirani Razvoj
+                </a>
+                <a href="#final-section" data-target="final-section" class="nav-link flex items-center p-3 rounded-lg">
+                    <span class="text-lg mr-3">🏁</span> Završni deo
+                </a>
+            </nav>
+            <button id="reset-progress-button" class="reset-button w-full mt-8">Resetuj Napredak</button>
+        </aside>
+
+        <button id="menu-toggle" class="md:hidden fixed top-4 left-4 z-40 p-2 aleksandra-accent-bg text-white rounded-md">
+            ☰
+        </button>
+
+        <main class="flex-1 md:ml-64 p-6 md:p-10 transition-all duration-300 bg-black">
+            <div class="progress-container">
+                <div id="course-progress-bar" class="progress-bar"></div>
+            </div>
+            <div id="content-area">
+                
+                <div id="dashboard" class="daily-content">
+                    <header class="mb-10">
+                        <h2 class="text-3xl md:text-4xl font-bold aleksandra-main-text">Dobrodošla u Alhemiju Konverzacije!</h2>
+                        <p class="aleksandra-secondary-text mt-2">Ovo je tvoj 21-dnevni praktični vodič za transformaciju načina na koji komuniciraš. Cilj je da postaneš bolja sagovornica i da u svakodnevnoj konverzaciji ne izgledaš nezainteresovano. Svaki dan donosi nove uvide, vežbe i konkretne trikove. Pripremi se da transformišeš svoje veštine komunikacije!</p>
+                    </header>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+                        <div class="aleksandra-card-bg p-6 rounded-xl shadow-md border aleksandra-card-border card-hover-effect">
+                            <h3 class="font-bold text-xl mb-2 aleksandra-main-text flex items-center"><span class="text-3xl mr-3">👂</span> Aktivno Slušanje</h3>
+                            <p class="aleksandra-secondary-text">Nauči da zaista čuješ šta drugi govore, a ne samo da čekaš svoj red da govoriš.</p>
+                        </div>
+                        <div class="aleksandra-card-bg p-6 rounded-xl shadow-md border aleksandra-card-border card-hover-effect">
+                            <h3 class="font-bold text-xl mb-2 aleksandra-main-text flex items-center"><span class="text-3xl mr-3">🗣️</span> Jasan Izražaj</h3>
+                            <p class="aleksandra-secondary-text">Razvij veštine jasnog, konciznog i zanimljivog izražavanja misli.</p>
+                        </div>
+                        <div class="aleksandra-card-bg p-6 rounded-xl shadow-md border aleksandra-card-border card-hover-effect">
+                            <h3 class="font-bold text-xl mb-2 aleksandra-main-text flex items-center"><span class="text-3xl mr-3">✨</span> Angažovanost</h3>
+                            <p class="aleksandra-secondary-text">Otkrij kako da pokažeš istinsko interesovanje i povežeš se sa sagovornikom.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="aleksandra-card-bg p-6 rounded-xl shadow-md border aleksandra-card-border">
+                        <h3 class="font-bold text-xl mb-4 aleksandra-main-text">Pregled 21-dnevnog Programa</h3>
+                        <p class="aleksandra-secondary-text">Ovaj program je tvoj praktični vodič za transformaciju komunikacije. Svaki dan je osmišljen da te korak po korak vodi ka tome da postaneš bolja sagovornica, kombinujući unutrašnje uvide sa konkretnim vežbama i trikovima. Spremi se da reprogramiraš svoj um, ukloniš prepreke i aktiviraš svoj potencijal za angažovanu konverzaciju.</p>
+                        <ul class="list-disc list-inside space-y-2 aleksandra-secondary-text mt-4">
+                            <li>**Dani 1-3:** Postavljanje temelja: aktivno slušanje i postavljanje pitanja.</li>
+                            <li>**Dani 4-7:** Neverbalna komunikacija i proširivanje znanja.</li>
+                            <li>**Dani 8-10:** Vođenje razgovora i izbegavanje monologa.</li>
+                            <li>**Dani 11-14:** Prevazilaženje tišine i humor.</li>
+                            <li>**Dani 15-17:** Izgradnja odnosa i autentičnost.</li>
+                            <li>**Dani 18-21:** Svesnost, praćenje napretka i kontinuirani razvoj.</li>
+                        </ul>
+                        <p class="aleksandra-secondary-text mt-4">Zapamti, doslednost je ključna. Svaki dan je važan korak na tvom putovanju! Srećno!</p>
+                    </div>
+                    <div class="daily-emoji">
+                        🗣️
+                    </div>
+                </div>
+
+                <!-- DAN 1 -->
+                <div id="day-1" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">👂 Dan 1: Aktivno Slušanje</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas postavljamo temelj za svaku dobru konverzaciju: aktivno slušanje. Mnogi ljudi slušaju samo da bi odgovorili, a ne da bi razumeli. Aktivno slušanje znači potpunu posvećenost sagovornici, razumevanje njenih reči, osećanja i poruke iza reči. Ovo je ključ za pokazivanje istinskog interesovanja i izgradnju dublje veze. Kada zaista slušaš, sagovornica se oseća cenjeno i shvaćeno, što otvara put za mnogo angažovaniju i plodonosniju komunikaciju.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d1-s1">
+                        <summary class="aleksandra-main-text">🎯 Fokus na Sagovornicu</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Trik je da se potpuno fokusiraš na osobu koja govori. Isključi unutrašnji dijalog, ne razmišljaj o tome šta ćeš sledeće reći. Tvoj um je kao reflektor – usmeri ga na sagovornicu. Ovo ti omogućava da uhvatiš sve nijanse, ne samo reči, već i ton glasa, emocije, pauze. Kada si potpuno prisutna, sagovornica to oseća i otvara se više. To je kao da joj daješ poklon svoje nepodeljene pažnje.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno se trudi da ne prekidaš sagovornicu. Kada završi sa rečenicom, napravi pauzu od 1-2 sekunde pre nego što odgovoriš. Ova kratka pauza ti daje vreme da procesuiraš ono što je rečeno i pokazuje sagovornici da si zaista slušala. Nakon što završiš, u beleške zapiši kako si se osećala i da li si primetila razliku u reakciji sagovornice.</p>
+                            <div class="sub-daily-emoji">
+                                🧘‍♀️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d1-s1-note" placeholder="Moja iskustva sa pauzama..."></textarea>
+                            <button class="complete-button" data-submodule-id="d1-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d1-s2">
+                        <summary class="aleksandra-main-text">🗣️ Ponovi i Potvrdi</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Jedan od najmoćnijih trikova aktivnog slušanja je parafraziranje. To znači da svojim rečima ponoviš ono što si razumela da je sagovornica rekla. Na primer: "Ako sam te dobro razumela, ti misliš da..." ili "Dakle, ti si rekla da..." Ovo ne samo da potvrđuje sagovornici da si je slušala, već ti daje priliku da razjasniš ako si nešto pogrešno shvatila. Takođe, to ti kupuje vreme da formulišeš promišljen odgovor.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, pokušaj da parafraziraš ono što je sagovornica rekla pre nego što odgovoriš. Ne moraš da ponoviš svaku reč, već suštinu poruke. Obrati pažnju na reakciju sagovornice. Zapiši u beleške kako je to uticalo na tok razgovora.</p>
+                            <div class="sub-daily-emoji">
+                                🔁
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d1-s2-note" placeholder="Moja iskustva sa parafraziranjem..."></textarea>
+                            <button class="complete-button" data-submodule-id="d1-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 2 -->
+                <div id="day-2" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">❓ Dan 2: Postavljanje Pravih Pitanja</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas učimo da postavljaš pitanja koja otvaraju razgovor, a ne zatvaraju ga. Prava pitanja su ključ za produbljivanje konverzacije i pokazivanje iskrenog interesovanja. Umesto pitanja na koja se odgovara sa "da" ili "ne", fokusiraćemo se na otvorena pitanja koja podstiču sagovornicu da deli više informacija, mišljenja i osećanja. Ovo je esencijalno za izbegavanje osećaja nezainteresovanosti i za izgradnju angažovanog dijaloga.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d2-s1">
+                        <summary class="aleksandra-main-text">🤔 Otvorena vs. Zatvorena Pitanja</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Zatvorena pitanja (npr. "Jesi li dobro?") vode ka kratkim odgovorima i često prekidaju tok razgovora. Otvorena pitanja (npr. "Kako si provela dan?") podstiču sagovornicu da razradi svoje misli, deli detalje i osećanja. Koristi reči poput "kako", "zašto", "šta", "opiši", "reci mi više o...". Ovo pokazuje da si zainteresovana za dublji nivo razumevanja, a ne samo za površne informacije.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, pokušaj da izbegneš zatvorena pitanja. Umesto toga, formuliši otvorena pitanja. Na primer, umesto "Jesi li gledala film?", pitaj "Šta ti se najviše svidelo u filmu koji si gledala?". Zapiši u beleške primere otvorenih pitanja koje si postavila i kako su sagovornice reagovale.</p>
+                            <div class="sub-daily-emoji">
+                                💬
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d2-s1-note" placeholder="Moji primeri otvorenih pitanja..."></textarea>
+                            <button class="complete-button" data-submodule-id="d2-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d2-s2">
+                        <summary class="aleksandra-main-text">💡 Pitanja koja Produbljuju</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Nakon što sagovornica nešto kaže, postavi pitanje koje produbljuje temu. To može biti pitanje o osećanjima, motivaciji, iskustvima ili budućim planovima. Na primer, ako neko kaže "Bila sam na putovanju", umesto "Jesi li se lepo provela?", pitaj "Šta ti je ostavilo najjači utisak na putovanju i zašto?". Ovakva pitanja pokazuju da si pažljivo slušala i da želiš da razumeš više, čime se izbegava osećaj nezainteresovanosti.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, nakon što sagovornica podeli neku informaciju, postavi jedno produbljujuće pitanje. Cilj je da podstakneš sagovornicu da deli više o svojim osećanjima ili dubljim razlozima. Zapiši u beleške kako su sagovornice reagovale na ovakva pitanja i da li se razgovor produbio.</p>
+                            <div class="sub-daily-emoji">
+                                🌊
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d2-s2-note" placeholder="Moja iskustva sa produbljujućim pitanjima..."></textarea>
+                            <button class="complete-button" data-submodule-id="d2-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 3 -->
+                <div id="day-3" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🗣️ Dan 3: Jasan i Koncizan Govor</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na to kako da tvoj govor bude jasan, koncizan i privlačan. Često se ljudi izgube u dugim, zamršenim rečenicama ili previše detalja, što može dovesti do toga da sagovornica izgubi interesovanje. Cilj je da naučiš kako da preneseš svoju poruku efikasno, bez suvišnih reči, ali sa dovoljno detalja da bude zanimljiva. Ovo je ključno za održavanje pažnje sagovornice i pokazivanje da ceniš njeno vreme.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d3-s1">
+                        <summary class="aleksandra-main-text">✂️ Izbegavanje Suvišnih Reči</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Mnogi ljudi koriste "filere" (poput "hm", "pa", "znaš", "ovaj") ili ponavljaju iste stvari. To može učiniti da zvučiš nesigurno ili da razvodniš svoju poruku. Trik je da budeš svesna ovih navika i da ih postepeno eliminišeš. Pre nego što progovoriš, razmisli o ključnoj poruci koju želiš da preneseš. Manje je često više.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, obrati pažnju na svoje "filere". Pokušaj da ih svesno smanjiš. Ako primetiš da koristiš "hm" ili "pa", napravi kratku pauzu umesto da popunjavaš tišinu. Zapiši u beleške koliko često si ih koristila i da li si primetila poboljšanje.</p>
+                            <div class="sub-daily-emoji">
+                                🤫
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d3-s1-note" placeholder="Moji fileri i napredak..."></textarea>
+                            <button class="complete-button" data-submodule-id="d3-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d3-s2">
+                        <summary class="aleksandra-main-text">📝 Struktura Poruke</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Kada pričaš o nečemu, pokušaj da imaš jasnu strukturu: uvod (šta je tema), telo (detalji, objašnjenja) i zaključak (glavna poenta ili pitanje). Ovo pomaže sagovornici da lakše prati tvoju misao i da ostane angažovana. Izbegavaj skakanje sa teme na temu bez jasnog prelaza.</p>
+                            <p><strong>Vežba (5 min):</strong> Pre nego što započneš priču ili objasniš nešto, mentalno (ili kratko zapiši) skiciraj ključne tačke. Pokušaj da pričaš u "pasusima", sa jasnim početkom i krajem svake misli. Zapiši u beleške kako ti je ova struktura pomogla da budeš jasnija i kako su sagovornice reagovale.</p>
+                            <div class="sub-daily-emoji">
+                                🏗️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d3-s2-note" placeholder="Moja iskustva sa strukturom poruke..."></textarea>
+                            <button class="complete-button" data-submodule-id="d3-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 4 -->
+                <div id="day-4" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">👁️‍🗨️ Dan 4: Govor Tela i Neverbalna Komunikacija</h2>
+                    <p class="aleksandra-secondary-text mb-6">Tvoje telo govori više od reči! Danas se fokusiramo na neverbalne signale koje šalješ i kako oni utiču na percepciju tvoje zainteresovanosti. Otvoren govor tela, kontakt očima i ekspresije lica su ključni za pokazivanje angažovanosti i izgradnju poverenja. Čak i ako si unutra zainteresovana, zatvoren govor tela može poslati pogrešnu poruku.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d4-s1">
+                        <summary class="aleksandra-main-text">👐 Otvoren Govor Tela</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Prekrštene ruke, spuštena ramena ili okretanje tela od sagovornice mogu signalizirati nezainteresovanost ili zatvorenost. Trik je da tvoje telo bude otvoreno: ne prekrštaj ruke, okreni se ka sagovornici, blago se nagnuti napred. Ovo pokazuje da si otvorena za komunikaciju i da si prisutna u razgovoru.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno obrati pažnju na svoj govor tela. Pokušaj da držiš ruke opušteno pored tela ili na stolu, da se okreneš ka sagovornici i da se blago nagneš napred. Zapiši u beleške kako si se osećala i da li si primetila razliku u interakciji.</p>
+                            <div class="sub-daily-emoji">
+                                🧍‍♀️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d4-s1-note" placeholder="Moje telo govori..."></textarea>
+                            <button class="complete-button" data-submodule-id="d4-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d4-s2">
+                        <summary class="aleksandra-main-text">👀 Kontakt Očima i Ekspresije Lica</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Izbegavanje kontakta očima može izgledati kao nezainteresovanost ili neiskrenost. Održavaj prirodan kontakt očima (ne bulji, već povremeno skreni pogled pa se vrati). Takođe, tvoje lice treba da odražava emocije razgovora – blagi osmeh kada je prikladno, ozbiljan izraz kada je tema ozbiljna. Ovo pokazuje da si angažovana i da razumeš ton razgovora.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno vežbaj kontakt očima. Pokušaj da održavaš kontakt oko 60-70% vremena. Takođe, obrati pažnju na ekspresije lica – da li se tvoje lice menja u skladu sa temom razgovora? Zapiši u beleške kako ti je to išlo i da li si primetila reakciju sagovornice.</p>
+                            <div class="sub-daily-emoji">
+                                😃
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d4-s2-note" placeholder="Moj kontakt očima i ekspresije..."></textarea>
+                            <button class="complete-button" data-submodule-id="d4-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 5 -->
+                <div id="day-5" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">😊 Dan 5: Osmeh i Kontakt Očima</h2>
+                    <p class="aleksandra-secondary-text mb-6">Osmeh je univerzalni jezik. Danas ćemo se fokusirati na moć osmeha i kontakta očima u stvaranju pozitivne atmosfere i pokazivanju zainteresovanosti. Blagi, iskreni osmeh otvara vrata komunikaciji, čini te pristupačnijom i šalje poruku dobrodošlice. U kombinaciji sa adekvatnim kontaktom očima, stvaraš osećaj povezanosti i poverenja.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d5-s1">
+                        <summary class="aleksandra-main-text">😊 Snaga Osmeha</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Osmeh je zarazan i odmah menja atmosferu. Ne moraš da se smeješ kao luda na svaku reč, ali blagi, prirodni osmeh kada se sretneš sa nekim, kada se tema razgovora opusti, ili kada se slažeš sa nečim, može učiniti čuda. Osmeh signalizira da si prijateljski nastrojena, pristupačna i da uživaš u interakciji. To je jednostavan, ali moćan alat za poboljšanje tvoje komunikacije.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, svesno se trudi da se blago osmehneš kada započinješ razgovor, kada te neko pozdravi, ili kada se tema razgovora razvija u pozitivnom smeru. Posmatraj reakciju ljudi. Da li su uzvratili osmeh? Da li su delovali opuštenije? Zapiši u beleške svoja zapažanja.</p>
+                            <div class="sub-daily-emoji">
+                                😄
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d5-s1-note" placeholder="Moja iskustva sa osmehom..."></textarea>
+                            <button class="complete-button" data-submodule-id="d5-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d5-s2">
+                        <summary class="aleksandra-main-text">👁️ Pravi Kontakt Očima</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Kontakt očima pokazuje da si prisutna i angažovana. Ne radi se o buljenju, već o prirodnom održavanju kontakta. Pokušaj da gledaš sagovornicu u oči oko 60-70% vremena, povremeno skrećući pogled na kratko, pa se vraćajući. Ovo stvara osećaj povezanosti i poverenja. Izbegavanje kontakta očima može biti pogrešno protumačeno kao nezainteresovanost, nervoza ili neiskrenost.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno vežbaj održavanje kontakta očima. Pokušaj da ga održavaš duže nego inače, ali da ne pređeš granicu buljenja. Prati kako se osećaš dok to radiš i kako sagovornica reaguje. Zapiši u beleške svoja zapažanja i osećaje.</p>
+                            <div class="sub-daily-emoji">
+                                👀
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d5-s2-note" placeholder="Moj kontakt očima danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d5-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 6 -->
+                <div id="day-6" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🧠 Dan 6: Proširivanje Opšteg Znanja</h2>
+                    <p class="aleksandra-secondary-text mb-6">Da bi bila dobra sagovornica, važno je da imaš o čemu da pričaš. Danas se fokusiramo na proširivanje opšteg znanja i informisanosti o različitim temama. Kada imaš širok spektar interesovanja i znanja, lakše ćeš se uključiti u različite razgovore, postavljati relevantna pitanja i deliti zanimljive uvide. Ovo ti pomaže da izbegneš osećaj da nemaš šta da kažeš i da uvek imaš nešto da doprineseš konverzaciji.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d6-s1">
+                        <summary class="aleksandra-main-text">📰 Budi Informisana</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Čitaj vesti, prati aktuelnosti, gledaj dokumentarce, slušaj podcaste. Ne moraš da budeš ekspert za svaku temu, ali opšte znanje o dešavanjima u svetu, kulturi, nauci, sportu, itd., daje ti materijal za razgovor. Trik je da ne budeš "sveznalica", već da koristiš informacije da otvoriš diskusiju i postaviš pitanja, a ne da držiš predavanja.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, posveti 5 minuta čitanju vesti iz različitih oblasti (npr. politika, tehnologija, kultura, sport). Pokušaj da pronađeš barem jednu zanimljivu činjenicu ili priču koju bi mogla da podeliš u neformalnom razgovoru. Zapiši u beleške šta si naučila i kako bi to mogla da iskoristiš u konverzaciji.</p>
+                            <div class="sub-daily-emoji">
+                                📚
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d6-s1-note" placeholder="Šta sam naučila danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d6-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d6-s2">
+                        <summary class="aleksandra-main-text">🤔 Razvijanje Interesovanja</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Aktivno razvijaj nova interesovanja. Što više stvari te zanima, to više tema možeš da istražiš i o kojima možeš da pričaš. Ne plaši se da postavljaš pitanja o temama koje ti nisu poznate – to pokazuje radoznalost i želju za učenjem, što je privlačno. Ljudi vole da pričaju o svojim strastima, a tvoje interesovanje će ih podstaći da dele više.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, odaberi jednu temu o kojoj malo znaš, ali koja ti se čini zanimljivom (npr. istorija nekog grada, novi naučni izum, specifičan žanr muzike). Posveti 5 minuta istraživanju te teme online. Zapiši 3-5 zanimljivih činjenica koje si naučila i razmisli kako bi ih mogla da pomeneš u razgovoru.</p>
+                            <div class="sub-daily-emoji">
+                                💡
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d6-s2-note" placeholder="Moja nova interesovanja..."></textarea>
+                            <button class="complete-button" data-submodule-id="d6-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 7 -->
+                <div id="day-7" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🔄 Dan 7: Vežbe Parafraziranja i Sumiranja</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se vraćamo na aktivno slušanje, ali sa fokusom na naprednije tehnike: parafraziranje i sumiranje. Ove vežbe ti pomažu da ne samo čuješ, već i da obradiš i razumeš informacije, a zatim ih jasno i koncizno saopštiš sagovornici. Ovo pokazuje duboko razumevanje i angažovanost, čime se izbegava osećaj nezainteresovanosti i gradi poverenje.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d7-s1">
+                        <summary class="aleksandra-main-text">🗣️ Napredno Parafraziranje</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Parafraziranje nije samo ponavljanje reči, već interpretacija onoga što je sagovornica rekla svojim rečima, uz proveru razumevanja. Na primer: "Ako sam te dobro razumela, ti si frustrirana zbog X, jer se Y desilo, i nadaš se da će Z rešiti problem." Ovo pokazuje da si razumela i činjenice i osećanja. Trik je da to radiš prirodno, a ne kao da recituješ.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, nakon što sagovornica završi dužu misao ili priču, pokušaj da je parafraziraš, uključujući i osećanja koja si primetila. Na primer, "Zvučiš kao da si zaista uzbuđena zbog tog novog projekta." Zapiši u beleške kako je to uticalo na sagovornicu i da li se razgovor produbio.</p>
+                            <div class="sub-daily-emoji">
+                                💬
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d7-s1-note" placeholder="Moja iskustva sa naprednim parafraziranjem..."></textarea>
+                            <button class="complete-button" data-submodule-id="d7-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d7-s2">
+                        <summary class="aleksandra-main-text">📝 Sumiranje Ključnih Tačaka</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Na kraju dužeg razgovora ili diskusije, korisno je sumirati ključne tačke. To pokazuje da si pratila ceo razgovor i da si uhvatila glavne ideje. Na primer: "Dakle, da sumiramo, razgovarali smo o A, B i C, i složile smo se oko D." Ovo je posebno korisno u poslovnim ili formalnijim konverzacijama, ali može se primeniti i u neformalnim da pokažeš pažnju.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, nakon dužeg razgovora sa nekim (npr. sa prijateljicom o planovima za vikend, sa koleginicom o projektu), pokušaj da sumiraš ključne tačke razgovora. Ne moraš da budeš previše formalna, samo da pokažeš da si uhvatila suštinu. Zapiši u beleške kako je to uticalo na sagovornicu i da li je razgovor dobio jasan zaključak.</p>
+                            <div class="sub-daily-emoji">
+                                ✍️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d7-s2-note" placeholder="Moja iskustva sa sumiranjem..."></textarea>
+                            <button class="complete-button" data-submodule-id="d7-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 8 -->
+                <div id="day-8" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🚫 Dan 8: Izbegavanje Monologa i Uključivanje Drugih</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na to kako da izbegneš pretvaranje razgovora u monolog i kako da aktivno uključiš druge u diskusiju. Jedan od glavnih razloga zašto neko može izgledati nezainteresovano je kada dominira razgovorom ili ne daje prostor drugima da govore. Cilj je da naučiš kako da stvoriš balans u konverzaciji, gde svako ima priliku da doprinese i oseća se saslušano.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d8-s1">
+                        <summary class="aleksandra-main-text">🚫 Prepoznavanje Monologa</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Monolog se dešava kada pričaš predugo bez pauze, ne postavljaš pitanja, ili ne daješ priliku drugima da se uključe. Trik je da budeš svesna koliko dugo pričaš. Ako primetiš da si pričala više od 30-60 sekundi bez prekida, to je znak da treba da se zaustaviš i daš reč drugome. Ponekad je to nesvesna navika, ali svesnost je prvi korak ka promeni.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno prati koliko dugo pričaš. Ako primetiš da si prešla granicu od 30-60 sekundi, svesno napravi pauzu i postavi pitanje sagovornici, ili je pozovi da se uključi. Zapiši u beleške kada si prepoznala monolog i kako si reagovala.</p>
+                            <div class="sub-daily-emoji">
+                                🔇
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d8-s1-note" placeholder="Moji monolozi i prekidi..."></textarea>
+                            <button class="complete-button" data-submodule-id="d8-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d8-s2">
+                        <summary class="aleksandra-main-text">🤝 Aktivno Uključivanje Drugih</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Nakon što si iznela svoju misao, aktivno pozovi sagovornicu da se uključi. To možeš učiniti direktnim pitanjem ("Šta ti misliš o tome?", "Da li si imala slično iskustvo?") ili otvorenim pozivom ("Volela bih da čujem tvoje mišljenje"). Ovo pokazuje da ceniš njihovo mišljenje i da želiš da čuješ njihovu perspektivu, čime se izbegava osećaj nezainteresovanosti.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, nakon što si iznela svoju misao, aktivno pozovi sagovornicu da se uključi. Pokušaj da postaviš pitanje koje je relevantno za ono što si upravo rekla, ali koje otvara prostor za njihov odgovor. Zapiši u beleške kako su sagovornice reagovale na tvoje pozive za uključivanje.</p>
+                            <div class="sub-daily-emoji">
+                                ➡️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d8-s2-note" placeholder="Moje uključivanje drugih..."></textarea>
+                            <button class="complete-button" data-submodule-id="d8-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 9 -->
+                <div id="day-9" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">❤️ Dan 9: Empatija i Razumevanje Perspektive</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na empatiju – sposobnost da razumeš i podeliš osećanja drugih. Empatija je ključ za duboku i smislenu konverzaciju. Kada pokažeš empatiju, sagovornica se oseća shvaćeno i podržano, što gradi poverenje i eliminiše bilo kakav osećaj nezainteresovanosti. Nije dovoljno samo razumeti reči, već i emocije koje stoje iza njih.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d9-s1">
+                        <summary class="aleksandra-main-text">❤️ Slušanje sa Srcem</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Empatija počinje sa aktivnim slušanjem, ali ide korak dalje – pokušavaš da se staviš u cipele sagovornice. Razmisli o tome kako bi se ti osećala u njenoj situaciji. Ne moraš da se slažeš sa njenim mišljenjem, ali razumevanje njene perspektive je ključno. Trik je da prepoznaš emocije koje sagovornica izražava, čak i ako ih ne izgovara direktno.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, pokušaj da prepoznaš emocije koje sagovornica izražava. Ako neko zvuči frustrirano, možeš reći: "Zvučiš kao da si frustrirana zbog toga." Ako zvuči uzbuđeno, "Zvučiš zaista uzbuđeno!" Ovo pokazuje da si pažljiva i da ti je stalo. Zapiši u beleške primere emocija koje si prepoznala i kako si na njih reagovala.</p>
+                            <div class="sub-daily-emoji">
+                                💖
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d9-s1-note" placeholder="Moja empatija danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d9-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d9-s2">
+                        <summary class="aleksandra-main-text">🤝 Potvrđivanje Osećanja</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Kada sagovornica podeli svoja osećanja, potvrdi ih. Ne moraš da nudiš rešenje, samo da pokažeš da si ih čula i razumela. Na primer: "Razumem da ti je to teško palo" ili "Mogu da zamislim kako se osećaš". Ovo stvara osećaj validacije i pokazuje da nisi nezainteresovana, već da si prisutna i podržavajuća.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, kada sagovornica izrazi neko osećanje, potvrdi to osećanje. Koristi fraze poput "To zvuči...", "Mogu da razumem...", "To je zaista...". Zapiši u beleške kako su sagovornice reagovale na tvoju empatiju i da li se osećaj povezanosti produbio.</p>
+                            <div class="sub-daily-emoji">
+                                🤗
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d9-s2-note" placeholder="Moje potvrđivanje osećanja..."></textarea>
+                            <button class="complete-button" data-submodule-id="d9-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 10 -->
+                <div id="day-10" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">⏱️ Dan 10: Tajming i Pauze u Govoru</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na ritam i dinamiku tvoje konverzacije. Pravilno korišćenje pauza i tajminga je veština koja može drastično poboljšati tvoju komunikaciju, čineći te promišljenijom i angažovanijom sagovornicom. Izbegavanje prebrzog govora i učenje kada treba da napraviš pauzu su ključni za efikasnu komunikaciju i pokazivanje prisutnosti.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d10-s1">
+                        <summary class="aleksandra-main-text">⏸️ Moć Tišine</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Tišina nije praznina, već prilika. Kratke pauze u govoru ti daju vreme da razmisliš, a sagovornici da procesuiraju ono što je rečeno ili da se uključe. Prebrz govor može delovati kao da žuriš, da si nervozna ili da ne ceniš sagovornicino vreme. Trik je da koristiš pauze strateški – pre važne rečenice, nakon pitanja, ili kada želiš da naglasiš nešto.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno uspori svoj govor. Pre nego što odgovoriš na pitanje, napravi pauzu od 1-2 sekunde. Pre nego što izneseš važnu misao, napravi kratku pauzu. Zapiši u beleške kako si se osećala dok si usporavala i da li si primetila da sagovornice pažljivije slušaju.</p>
+                            <div class="sub-daily-emoji">
+                                🤫
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d10-s1-note" placeholder="Moje pauze u govoru..."></textarea>
+                            <button class="complete-button" data-submodule-id="d10-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d10-s2">
+                        <summary class="aleksandra-main-text">🎶 Ritam Konverzacije</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Svaka konverzacija ima svoj ritam. Dobra sagovornica se prilagođava tom ritmu. Ako sagovornica priča sporo, nemoj je prekidati ili žuriti. Ako priča brzo, pokušaj da je pratiš, ali i dalje održavaj svoju jasnoću. Trik je u fleksibilnosti i u tome da ne namećeš svoj ritam, već da se uskladiš sa sagovornicom. Ovo stvara osećaj harmonije i olakšava komunikaciju.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, obrati pažnju na ritam sagovornice. Pokušaj da se prilagodiš njenom tempu govora. Ako su spore, budi strpljiva. Ako su brze, pokušaj da pratiš, ali ne gubi svoju jasnoću. Zapiši u beleške kako si se osećala dok si se prilagođavala i da li si primetila da je razgovor tekao fluidnije.</p>
+                            <div class="sub-daily-emoji">
+                                🎼
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d10-s2-note" placeholder="Moj ritam konverzacije..."></textarea>
+                            <button class="complete-button" data-submodule-id="d10-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 11 -->
+                <div id="day-11" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🤫 Dan 11: Prevazilaženje Tišine i Neprijatnosti</h2>
+                    <p class="aleksandra-secondary-text mb-6">Tišina u razgovoru ne mora biti neprijatna. Danas učimo kako da se osećaš prijatno sa tišinom i kako da je iskoristiš konstruktivno, umesto da je doživljavaš kao znak nezainteresovanosti ili neuspeha. Ponekad je tišina potrebna za razmišljanje, a tvoja sposobnost da je prihvatiš pokazuje samopouzdanje i zrelost u komunikaciji.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d11-s1">
+                        <summary class="aleksandra-main-text">🧘‍♀️ Prihvatanje Tišine</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Mnogi ljudi se osećaju nelagodno u tišini i pokušavaju da je popune bilo čime. Trik je da shvatiš da je tišina prirodan deo razgovora. Ona može biti prilika za sagovornicu da razmisli, da se seti nečega, ili da se pripremi za odgovor. Umesto da je popunjavaš, prihvati je. To pokazuje da si opuštena i da ne osećaš pritisak da stalno pričaš.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, kada nastupi tišina, svesno se odupri želji da je odmah popuniš. Dozvoli da tišina traje 3-5 sekundi (ili duže, ako je prirodno). Posmatraj kako se osećaš i šta se dešava u tom trenutku. Zapiši u beleške svoja zapažanja i da li si primetila da je tišina dovela do dubljeg razgovora.</p>
+                            <div class="sub-daily-emoji">
+                                🤫
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d11-s1-note" placeholder="Moje prihvatanje tišine..."></textarea>
+                            <button class="complete-button" data-submodule-id="d11-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d11-s2">
+                        <summary class="aleksandra-main-text">💡 Korišćenje Tišine za Razmišljanje</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Tišina ti daje priliku da razmisliš o onome što je rečeno i da formulišeš promišljen odgovor. Umesto da brzopleto odgovaraš, iskoristi tišinu da obradiš informacije. To pokazuje da si pažljiva i da ceniš kvalitet razgovora, a ne samo brzinu. Sagovornica će ceniti tvoj promišljen pristup.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, kada ti sagovornica postavi pitanje, iskoristi kratku tišinu da razmisliš o svom odgovoru. Ne moraš da odgovoriš odmah. Pusti da prođe nekoliko sekundi pre nego što progovoriš. Zapiši u beleške kako ti je to pomoglo da formulišeš bolje odgovore i da li je sagovornica to primetila.</p>
+                            <div class="sub-daily-emoji">
+                                🧠
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d11-s2-note" placeholder="Moje razmišljanje u tišini..."></textarea>
+                            <button class="complete-button" data-submodule-id="d11-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 12 -->
+                <div id="day-12" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">😂 Dan 12: Humor i Lakoća u Konverzaciji</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas učimo kako da uneseš humor i lakoću u svoje razgovore. Humor, kada se koristi prikladno, može razbiti led, opustiti atmosferu i učiniti te privlačnijom sagovornicom. Ne radi se o tome da budeš komičarka, već o sposobnosti da prepoznaš prilike za blagi humor i da ne shvataš sve previše ozbiljno. Lakoća u konverzaciji pokazuje da si opuštena i da uživaš u interakciji.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d12-s1">
+                        <summary class="aleksandra-main-text">🤣 Blagi Humor</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Humor je odličan način da se povežeš sa ljudima. To može biti blaga šala, duhovita opaska, ili sposobnost da se smeješ sebi. Trik je da humor bude prikladan situaciji i sagovornici. Izbegavaj uvredljiv humor ili šale koje mogu nekoga povrediti. Cilj je da stvoriš pozitivnu atmosferu i da pokažeš svoju opuštenu stranu.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, pokušaj da u najmanje jednoj konverzaciji uneseš blagi humor. To može biti duhovita opaska o nečemu što se dešava oko vas, ili samokritična šala o sebi. Posmatraj reakciju sagovornice. Da li su se nasmejale? Da li se atmosfera opustila? Zapiši u beleške svoje iskustvo.</p>
+                            <div class="sub-daily-emoji">
+                                😄
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d12-s1-note" placeholder="Moj humor danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d12-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d12-s2">
+                        <summary class="aleksandra-main-text">🎈 Opuštenost i Lakoća</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Ne shvataj svaku konverzaciju previše ozbiljno. Ponekad je cilj samo da se opustiš i uživaš u razmeni. Preterana ozbiljnost može odbiti ljude i stvoriti osećaj pritiska. Lakoća u komunikaciji pokazuje da si samopouzdana i da uživaš u interakciji. To se ogleda u opuštenom tonu glasa, blagom osmehu i otvorenom govoru tela.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno se trudi da budeš opuštenija. Ne brini previše o tome šta ćeš reći ili kako ćeš zvučati. Fokusiraj se na to da uživaš u razmeni. Zapiši u beleške kako se osećaš kada si opuštena i da li si primetila da se i sagovornica opustila.</p>
+                            <div class="sub-daily-emoji">
+                                😌
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d12-s2-note" placeholder="Moja lakoća u razgovoru..."></textarea>
+                            <button class="complete-button" data-submodule-id="d12-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 13 -->
+                <div id="day-13" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">📖 Dan 13: Pričanje Priča i Anecdota</h2>
+                    <p class="aleksandra-secondary-text mb-6">Ljudi vole priče! Danas učimo kako da koristiš priče i anegdote da bi tvoji razgovori bili zanimljiviji i pamtljiviji. Pričanje priča je moćan alat za povezivanje sa sagovornicom, prenošenje poruka i održavanje pažnje. Umesto suvoparnih činjenica, priče oživljavaju razgovor i čine te angažovanijom sagovornicom.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d13-s1">
+                        <summary class="aleksandra-main-text">📚 Struktura Priče</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Dobra priča ima početak, sredinu i kraj. Ne mora biti dugačka ili komplikovana. Može biti kratka anegdota iz tvog života, nešto što si čula ili pročitala. Trik je da priča ima poentu i da je relevantna za temu razgovora. Fokusiraj se na detalje koji su zanimljivi i na emocije koje želiš da preneseš.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, razmisli o 2-3 kratke anegdote iz svog života koje bi mogla da podeliš u razgovoru (npr. smešna situacija, zanimljivo iskustvo, nešto što si naučila). Vežbaj da ih ispričaš naglas, fokusirajući se na jasan početak, sredinu i kraj. Zapiši u beleške svoje anegdote i kako bi ih mogla da uklopiš u razgovor.</p>
+                            <div class="sub-daily-emoji">
+                                ✍️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d13-s1-note" placeholder="Moje anegdote..."></textarea>
+                            <button class="complete-button" data-submodule-id="d13-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d13-s2">
+                        <summary class="aleksandra-main-text">✨ Prenošenje Emocija Kroz Priču</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Priče su moćne jer prenose emocije. Kada pričaš, koristi svoj glas (ton, jačinu, brzinu) i govor tela da dočaraš atmosferu priče. Ne samo da govoriš o događajima, već i o tome kako si se osećala, ili kako su se drugi osećali. Ovo čini priču živom i angažuje sagovornicu na dubljem nivou.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje jednoj konverzaciji, podeli jednu od svojih anegdota. Dok pričaš, svesno pokušaj da preneseš emocije kroz svoj glas i govor tela. Posmatraj reakciju sagovornice. Da li su bile angažovane? Da li su se smejale ili pokazivale empatiju? Zapiši u beleške svoje iskustvo.</p>
+                            <div class="sub-daily-emoji">
+                                🎭
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d13-s2-note" placeholder="Moje pričanje priča danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d13-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 14 -->
+                <div id="day-14" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🎯 Dan 14: Fokus na Sagovornicu i Izbegavanje Sebe</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na to da razgovor bude o sagovornici, a ne samo o tebi. Iako je važno da deliš svoja iskustva, preterano pričanje o sebi može učiniti da izgledaš nezainteresovano za druge. Cilj je da stvoriš balans, gde deliš svoja iskustva kada je to relevantno, ali se uvek vraćaš na sagovornicu i njeno iskustvo.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d14-s1">
+                        <summary class="aleksandra-main-text">⚖️ Balans Između "Ja" i "Ti"</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Kada sagovornica nešto podeli, prirodno je da se setiš sličnog iskustva. Međutim, umesto da odmah preuzmeš reč i pričaš o sebi, prvo potvrdi sagovornicino iskustvo, a zatim, ako je prikladno, podeli svoje. Trik je da se uvek vratiš na sagovornicu pitanjem: "Da li si se ti osećala slično?" ili "Šta ti misliš o tome?". Ovo pokazuje da si zainteresovana za njihovu perspektivu, a ne samo za deljenje svoje.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno obrati pažnju na balans između pričanja o sebi i slušanja drugih. Ako primetiš da si previše pričala o sebi, svesno postavi pitanje sagovornici. Zapiši u beleške kako si se osećala i da li si primetila poboljšanje u balansu.</p>
+                            <div class="sub-daily-emoji">
+                                ⚖️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d14-s1-note" placeholder="Moj balans u razgovoru..."></textarea>
+                            <button class="complete-button" data-submodule-id="d14-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d14-s2">
+                        <summary class="aleksandra-main-text">👂 Aktivno Slušanje i Pitanja</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Najbolji način da se fokusiraš na sagovornicu je kroz aktivno slušanje i postavljanje pitanja. Kada sagovornica priča, slušaj pažljivo, postavljaj produbljujuća pitanja (Dan 2) i parafraziraj (Dan 1). Ovo ti pomaže da ostaneš angažovana i da pokažeš istinsko interesovanje, bez potrebe da stalno pričaš o sebi.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, fokusiraj se isključivo na aktivno slušanje i postavljanje pitanja. Pokušaj da se suzdržiš od deljenja svojih iskustava, osim ako te sagovornica ne pita direktno. Zapiši u beleške kako ti je to išlo i da li si primetila da sagovornica više priča i da se oseća prijatnije.</p>
+                            <div class="sub-daily-emoji">
+                                👂
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d14-s2-note" placeholder="Moje fokusiranje na sagovornicu..."></textarea>
+                            <button class="complete-button" data-submodule-id="d14-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 15 -->
+                <div id="day-15" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🤝 Dan 15: Izgradnja Raporta i Povezanosti</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na izgradnju rapota – osećaja poverenja, razumevanja i povezanosti sa sagovornicom. Raport je temelj svake uspešne komunikacije. Kada uspostaviš raport, sagovornica se oseća prijatno, opušteno i spremna je da deli više. Ovo je ključno za izbegavanje osećaja nezainteresovanosti i za stvaranje dubljih, smislenijih veza.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d15-s1">
+                        <summary class="aleksandra-main-text">👯‍♀️ Ogledanje i Usklađivanje</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Ogledanje (mirroring) je suptilno usklađivanje sa govorom tela, tonom glasa i tempom govora sagovornice. Ne radi se o imitiranju, već o diskretnom usklađivanju koje stvara osećaj "mi smo slične". Ako sagovornica sedi prekrštenih nogu, možeš i ti prekrstiti noge. Ako priča sporije, uspori i ti. Ovo podsvesno stvara osećaj povezanosti i poverenja.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, svesno pokušaj da se suptilno uskladiš sa govorom tela sagovornice (npr. ako se nagne napred, i ti se blago nagnuti). Takođe, obrati pažnju na njen ton glasa i tempo govora i pokušaj da se uskladiš. Zapiši u beleške kako si se osećala i da li si primetila da se sagovornica opustila.</p>
+                            <div class="sub-daily-emoji">
+                                👯‍♀️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d15-s1-note" placeholder="Moje ogledanje danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d15-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d15-s2">
+                        <summary class="aleksandra-main-text">👍 Pronalaženje Zajedničkih Tačaka</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Ljudi se povezuju kroz zajednička interesovanja, iskustva ili vrednosti. Aktivno traži zajedničke tačke u razgovoru i fokusiraj se na njih. To može biti zajednički hobi, slično iskustvo, ili čak samo sličan pogled na neku temu. Kada pronađeš zajedničku tačku, produbi je pitanjima i deljenjem svojih iskustava. Ovo stvara osećaj povezanosti i zajedništva.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno traži zajedničke tačke sa sagovornicom. Kada ih pronađeš, postavi dodatna pitanja o toj temi i podeli svoja iskustva. Zapiši u beleške koje si zajedničke tačke pronašla i kako su one uticale na razgovor.</p>
+                            <div class="sub-daily-emoji">
+                                🤝
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d15-s2-note" placeholder="Moje zajedničke tačke..."></textarea>
+                            <button class="complete-button" data-submodule-id="d15-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 16 -->
+                <div id="day-16" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🚫 Dan 16: Izbegavanje Negativnosti i Kukanja</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na to kako da održavaš pozitivnu energiju u razgovoru i izbegneš negativnost i kukanje. Iako je važno biti iskrena, preterano žaljenje, kritikovanje ili fokusiranje na probleme može odbiti ljude i učiniti da izgledaš nezainteresovano za konstruktivan razgovor. Cilj je da budeš realna, ali da se fokusiraš na rešenja, pozitivne aspekte i konstruktivnu diskusiju.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d16-s1">
+                        <summary class="aleksandra-main-text">☀️ Fokus na Pozitivno</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Ljudi su prirodno privučeni pozitivnom energijom. Umesto da se fokusiraš na probleme, pokušaj da pronađeš nešto pozitivno u svakoj situaciji. Ne radi se o ignorisanju realnosti, već o biranju perspektive. Ako se žališ na nešto, pokušaj da odmah ponudiš i rešenje ili da prebaciš fokus na nešto konstruktivno. Trik je da budeš svesna svog tona i reči koje koristiš.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno se trudi da izbegneš kukanje i preteranu negativnost. Ako se nađeš u situaciji da se žališ, pokušaj da prebaciš fokus na rešenje ili na nešto pozitivno. Zapiši u beleške kako ti je to išlo i da li si primetila promenu u atmosferi razgovora.</p>
+                            <div class="sub-daily-emoji">
+                                🌞
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d16-s1-note" placeholder="Moj fokus na pozitivno..."></textarea>
+                            <button class="complete-button" data-submodule-id="d16-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d16-s2">
+                        <summary class="aleksandra-main-text">🚧 Preusmeravanje Razgovora</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Ako se razgovor krene u preterano negativnom smeru, nauči kako da ga suptilno preusmeriš. To možeš učiniti postavljanjem pitanja o nečemu pozitivnom, promenom teme, ili deljenjem neke pozitivne anegdote. Trik je da to uradiš prirodno, bez da deluješ kao da izbegavaš temu. Cilj je da održavaš konstruktivnu i prijatnu atmosferu.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje jednoj konverzaciji, ako primetiš da razgovor postaje previše negativan, pokušaj da ga suptilno preusmeriš. Zapiši u beleške kako si to uradila i da li je razgovor postao pozitivniji.</p>
+                            <div class="sub-daily-emoji">
+                                ➡️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d16-s2-note" placeholder="Moje preusmeravanje razgovora..."></textarea>
+                            <button class="complete-button" data-submodule-id="d16-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 17 -->
+                <div id="day-17" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">✨ Dan 17: Autentičnost i Biti Svoja</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na najvažniji aspekt komunikacije: autentičnost. Biti svoja u razgovoru je ključ za izgradnju iskrenih veza i izbegavanje osećaja da si "nezainteresovana" ili "lažna". Ljudi cene iskrenost i autentičnost. Ne pokušavaj da budeš neko ko nisi, već se fokusiraj na to da izraziš svoju pravu ličnost na angažovan način.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d17-s1">
+                        <summary class="aleksandra-main-text">🌟 Izražavanje Prave Ličnosti</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Autentičnost znači da si iskrena u svojim mislima, osećanjima i reakcijama. Ne moraš da se pretvaraš da te nešto zanima ako te zaista ne zanima, ali možeš pronaći način da postaviš pitanje koje je relevantno ili da preusmeriš razgovor na temu koja te zaista zanima. Trik je da budeš iskrena, ali i obzirna. Ljudi će ceniti tvoju iskrenost i tvoju jedinstvenost.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u svakoj konverzaciji, svesno se trudi da budeš autentična. Ne pokušavaj da impresioniraš, već se fokusiraj na to da budeš iskrena i otvorena. Ako te nešto zaista zanima, pokaži to. Ako te nešto ne zanima, pokušaj da pronađeš ugao koji te ipak angažuje ili suptilno promeni temu. Zapiši u beleške kako si se osećala dok si bila autentična i da li si primetila da su se ljudi otvorenije ponašali prema tebi.</p>
+                            <div class="sub-daily-emoji">
+                                💖
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d17-s1-note" placeholder="Moja autentičnost danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d17-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d17-s2">
+                        <summary class="aleksandra-main-text">💡 Pronalaženje Svoje Komunikacione Zone</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Svako ima svoj jedinstveni stil komunikacije. Ne moraš da budeš ekstrovertna da bi bila dobra sagovornica. Pronađi svoju "komunikacionu zonu" – stil koji ti odgovara i u kojem se osećaš prijatno. Možda si bolja u dubokim razgovorima jedan na jedan, ili u manjim grupama. Razumi svoje snage i iskoristi ih. Trik je da budeš svoja, ali najbolja verzija sebe.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, razmisli o svojim komunikacionim snagama. Da li si dobra slušateljka? Da li si dobra u postavljanju pitanja? Da li si dobra u pričanju priča? Fokusiraj se na korišćenje svojih snaga u razgovorima. Zapiši u beleške koje su tvoje komunikacione snage i kako si ih danas iskoristila.</p>
+                            <div class="sub-daily-emoji">
+                                🎯
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d17-s2-note" placeholder="Moja komunikaciona zona..."></textarea>
+                            <button class="complete-button" data-submodule-id="d17-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 18 -->
+                <div id="day-18" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🧘‍♀️ Dan 18: Svesnost i Prisutnost u Trenutku</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na svesnost i prisutnost u trenutku. Često se u razgovoru naš um prebacuje na druge stvari – šta ćemo jesti, šta treba da uradimo sutra, šta smo rekli juče. To može učiniti da izgledaš odsutno i nezainteresovano. Biti prisutna znači biti potpuno angažovana u sadašnjem trenutku, fokusirana na sagovornicu i razgovor. Ovo je ključ za duboku povezanost i angažovanost.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d18-s1">
+                        <summary class="aleksandra-main-text">🧠 Fokusiranje Uma</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Pre nego što započneš razgovor, ili kada primetiš da ti um luta, svesno se vrati u sadašnji trenutak. Možeš to učiniti tako što ćeš se fokusirati na dah, na zvuk glasa sagovornice, ili na detalje u okolini. Trik je da treniraš svoj um da ostane fokusiran na ono što se dešava sada. Ovo je kao mišić – što ga više vežbaš, to je jači.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, pre svake konverzacije, napravi kratku pauzu i svesno se fokusiraj na sadašnji trenutak. Obrati pažnju na svoje disanje. Tokom razgovora, ako primetiš da ti um luta, svesno ga vrati na sagovornicu. Zapiši u beleške kako ti je to išlo i da li si primetila da si bila angažovanija.</p>
+                            <div class="sub-daily-emoji">
+                                🧘‍♀️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d18-s1-note" placeholder="Moja prisutnost danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d18-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d18-s2">
+                        <summary class="aleksandra-main-text">👂 Slušanje Bez Osude</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Kada slušaš, pokušaj da slušaš bez osuđivanja, bez planiranja odgovora i bez upoređivanja sa svojim iskustvima. Samo slušaj da bi razumela. Ovo oslobađa tvoj um i omogućava ti da budeš potpuno prisutna u onome što sagovornica govori. To je najviši nivo aktivnog slušanja i pokazuje duboko poštovanje prema sagovornici.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, u najmanje tri konverzacije, svesno pokušaj da slušaš bez ikakve osude ili predrasuda. Samo se fokusiraj na razumevanje. Zapiši u beleške kako ti je to išlo i da li si primetila da sagovornica deli više informacija.</p>
+                            <div class="sub-daily-emoji">
+                                👂
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d18-s2-note" placeholder="Moje slušanje bez osude..."></textarea>
+                            <button class="complete-button" data-submodule-id="d18-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 19 -->
+                <div id="day-19" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">📈 Dan 19: Praćenje Napretka i Refleksija</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na praćenje tvog napretka i refleksiju o putovanju. Važno je da prepoznaš koliko si napredovala i da razmisliš o tome šta ti je najbolje funkcionisalo. Refleksija ti pomaže da učvrstiš naučeno, da prepoznaš oblasti za dalji razvoj i da ostaneš motivisana. Ovo je ključno za kontinuirani rast i dugoročno poboljšanje tvojih komunikacionih veština.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d19-s1">
+                        <summary class="aleksandra-main-text">📊 Dnevnik Napretka</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Redovno vođenje dnevnika ti pomaže da pratiš svoj napredak, prepoznaš obrasce i uvide. Svaki dan si zapisivala beleške; danas, pregledaj ih. Šta si naučila? Koje su se navike promenile? Gde si se najviše poboljšala? Trik je da budeš iskrena prema sebi i da slaviš male pobede. Čak i najmanji napredak je važan.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, pregledaj sve svoje beleške iz prethodnih dana. Zapiši 3-5 ključnih uvida ili poboljšanja koja si primetila u svojoj komunikaciji. Šta ti je najviše pomoglo? Koje vežbe su bile najefikasnije? Zapiši i gde još uvek vidiš prostor za poboljšanje.</p>
+                            <div class="sub-daily-emoji">
+                                📈
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d19-s1-note" placeholder="Moj napredak i uvidi..."></textarea>
+                            <button class="complete-button" data-submodule-id="d19-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d19-s2">
+                        <summary class="aleksandra-main-text">🌟 Proslava Malih Pobeda</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Svaki korak ka boljoj komunikaciji je pobeda. Proslavi svoj napredak, ma koliko mali bio. To može biti blagi osmeh, priznanje sebi, ili mala nagrada. Proslava pojačava pozitivnu vibraciju i motiviše te za dalji rad. Ne čekaj savršenstvo; slavi proces i trud.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, izaberi jednu malu pobedu u svojoj komunikaciji (npr. uspešno si postavila otvoreno pitanje, izbegla si prekidanje, održala si kontakt očima). Proslavi je na način koji ti odgovara. Zapiši u beleške kako si proslavila i kako si se osećala.</p>
+                            <div class="sub-daily-emoji">
+                                🎉
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d19-s2-note" placeholder="Moja proslava danas..."></textarea>
+                            <button class="complete-button" data-submodule-id="d19-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 20 -->
+                <div id="day-20" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">👂 Dan 20: Prihvatanje Povratnih Informacija</h2>
+                    <p class="aleksandra-secondary-text mb-6">Danas se fokusiramo na ključni aspekt rasta: prihvatanje povratnih informacija. Da bi zaista napredovala, moraš biti otvorena za konstruktivnu kritiku i zapažanja drugih. Povratne informacije su dar koji ti pomaže da vidiš sebe iz tuđe perspektive i da prepoznaš oblasti za poboljšanje. Cilj je da ih prihvatiš bez odbrambenog stava i da ih iskoristiš za svoj rast.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d20-s1">
+                        <summary class="aleksandra-main-text">🗣️ Slušanje Konstruktivne Kritike</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Kada ti neko da povratnu informaciju, slušaj aktivno, bez prekidanja i bez odbrambenog stava. Ne radi se o tome da se braniš, već o tome da razumeš njihovu perspektivu. Postavljaj pitanja za razjašnjenje ("Možeš li mi dati primer?", "Šta bi ti uradila u toj situaciji?"). Trik je da vidiš povratnu informaciju kao priliku za učenje, a ne kao napad.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, ako ti neko da povratnu informaciju o tvojoj komunikaciji (ili bilo čemu drugom), svesno je prihvati bez odbrambenog stava. Slušaj pažljivo i postavi jedno pitanje za razjašnjenje. Zapiši u beleške kako si se osećala i šta si naučila iz te povratne informacije.</p>
+                            <div class="sub-daily-emoji">
+                                🗣️
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d20-s1-note" placeholder="Moje prihvatanje kritike..."></textarea>
+                            <button class="complete-button" data-submodule-id="d20-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d20-s2">
+                        <summary class="aleksandra-main-text">💡 Traženje Povratnih Informacija</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Najbrži način da napreduješ je da aktivno tražiš povratne informacije od ljudi kojima veruješ. Možeš pitati prijateljicu, člana porodice, ili koleginicu: "Kako ti se čini moja komunikacija u poslednje vreme? Da li ima nešto što bih mogla da poboljšam?" Budi specifična u pitanjima. Ovo pokazuje proaktivnost i želju za rastom.</p>
+                            <p><strong>Vežba (5 min):</strong> Danas, odaberi jednu osobu kojoj veruješ i pitaj je za povratnu informaciju o tvojoj komunikaciji. Budi otvorena za sve što ti kaže. Zapiši u beleške šta si naučila iz te povratne informacije i kako planiraš da je primeniš.</p>
+                            <div class="sub-daily-emoji">
+                                ❓
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d20-s2-note" placeholder="Moje traženje povratnih informacija..."></textarea>
+                            <button class="complete-button" data-submodule-id="d20-s2">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DAN 21 -->
+                <div id="day-21" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🚀 Dan 21: Kontinuirani Razvoj i Vizija Budućnosti</h2>
+                    <p class="aleksandra-secondary-text mb-6">Čestitamo! Stigla si do kraja 21-dnevnog programa "Alhemija Konverzacije: Tvoj 21-dnevni Vodič za Bolju Komunikaciju". Ovo je značajno dostignuće i dokaz tvoje posvećenosti i upornosti. Danas se fokusiramo na održavanje zamaha koji si stvorila i kreiranje tvoje dugoročne vizije komunikacionog majstorstva. Komunikacija je veština koja se stalno razvija, i kontinuirani rast je ključ za održavanje i širenje tvojih veština. Neka ovaj dan bude početak tvoje nove, osnažene komunikacione realnosti.</p>
+                    <details class="mb-4 aleksandra-secondary-text" data-submodule-id="d21-s1">
+                        <summary class="aleksandra-main-text">🌟 Tvoja Dugoročna Vizija Komunikacije</summary>
+                        <div class="p-3 bg-gray-900 rounded-lg mt-2">
+                            <p>Sada kada si postavila temelje i preduzela konkretne korake, vreme je da proširiš svoju viziju i postaviš je za dugoročni uspeh. Gde vidiš sebe za 6 meseci, godinu, 5 godina u smislu komunikacije? Šta je tvoja ultimativna vizija da budeš majstor konverzacije? Detaljna i inspirativna vizija ti pomaže da ostaneš motivisana i fokusirana, čak i kada naiđeš na izazove. Ne ograničavaj se; dozvoli sebi da sanjaš veliko i da zamisliš život u kojem se osećaš samopouzdano i angažovano u svakoj konverzaciji.</p>
+                            <p><strong>Elementi tvoje dugoročne vizije komunikacionog majstorstva:</strong></p>
+                            <ul class="list-disc list-inside space-y-2 mt-2">
+                                <li><strong>Komunikacioni ciljevi:</strong> Koji su tvoji dugoročni ciljevi? (Npr. "Uvek se osećam samopouzdano u razgovoru sa nepoznatim ljudima", "Mogu da vodim duboke i smislene razgovore sa lakoćom", "Uvek pokazujem istinsko interesovanje i angažovanost").</li>
+                                <li><strong>Uticaj na odnose:</strong> Kako tvoje poboljšane komunikacione veštine utiču na tvoje odnose sa porodicom, prijateljima, kolegama?</li>
+                                <li><strong>Osećaji:</strong> Kako se osećaš kada živiš ovu viziju? (Samopouzdanje, mir, radost, povezanost, ispunjenost, zahvalnost). Emocija je gorivo za manifestaciju.</li>
+                                <li><strong>Lični rast:</strong> Kako si se ti promenila kao osoba na ovom putovanju? Koje si nove veštine stekla?</li>
+                            </ul>
+                            <p><strong>Zadatak:</strong> Napiši svoju viziju komunikacionog majstorstva za narednih 6 meseci do godinu dana, a zatim i za 3-5 godina. Budi što detaljnija i živopisnija. Zapiši je u sadašnjem vremenu, kao da se to već dešava. Na primer: "Uvek sam prisutna u razgovoru, postavljam promišljena pitanja i ljudi se osećaju prijatno da dele sa mnom. Mogu da vodim razgovore o bilo kojoj temi sa lakoćom i uvek se osećam povezano sa sagovornicom. Moje komunikacione veštine su mi pomogle da izgradim dublje odnose i da se osećam ispunjenije u svakodnevnim interakcijama." Neka ova vizija bude tvoj putokaz i inspiracija za svaki dan, podsećajući te zašto radiš ono što radiš. Čestitamo na završetku ovog programa i želimo ti neograničen uspeh, radost i smislene konverzacije na tvom predivnom putovanju!</p>
+                            <div class="sub-daily-emoji">
+                                🔭
+                            </div>
+                            <textarea class="daily-notes" data-note-id="d21-s1-note" placeholder="Moja vizija komunikacionog majstorstva..."></textarea>
+                            <button class="complete-button" data-submodule-id="d21-s1">Označi kao završeno</button>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- ZAVRŠNI DEO -->
+                <div id="final-section" class="daily-content hidden">
+                    <h2 class="text-3xl font-bold aleksandra-main-text mb-6">🏁 Završni deo: Tvoj Put ka Majstorstvu Konverzacije</h2>
+                    <p class="aleksandra-secondary-text mb-6">Čestitamo! Uspešno si završila 21-dnevni program "Alhemija Konverzacije: Tvoj 21-dnevni Vodič za Bolju Komunikaciju". Ovo je značajno dostignuće i dokaz tvoje posvećenosti, upornosti i sposobnosti da transformišeš svoj život. Sada poseduješ moćne alate i znanje da transformišeš svoj odnos sa komunikacijom i postaneš angažovanija sagovornica. Ovaj završni deo služi kao podsetnik na ključne principe i smernice za tvoj kontinuirani rast i primenu naučenog, jer komunikacija je putovanje koje se nastavlja. Nastavi da primenjuješ ove principe i tvoj život će se transformisati na neverovatne načine.</p>
+                    <div class="space-y-4 aleksandra-main-text">
+                        <h3 class="text-2xl font-semibold mb-2">Objedinjavanje Znanja i Praksi</h3>
+                        <p class="aleksandra-secondary-text">Sve što si naučila u ovom programu je međusobno povezano i čini celoviti sistem za poboljšanje tvoje komunikacije. Nije dovoljno samo razumeti jedan princip; prava moć leži u njihovoj sinergiji i doslednoj primeni. Aktivno slušanje, postavljanje pravih pitanja, jasan govor, neverbalna komunikacija, empatija, humor, pričanje priča, fokus na sagovornicu, izgradnja rapota, izbegavanje negativnosti, autentičnost, svesnost i prihvatanje povratnih informacija – svi ovi elementi rade zajedno kako bi stvorili neprekidan protok angažovane i smislene komunikacije u tvom životu. Ključ je u doslednoj i svesnoj primeni ovih principa u tvom svakodnevnom životu. Ne posmatraj ih kao odvojene veštine ili jednokratne zadatke, već kao integrisani pristup koji ti omogućava da svesno kreiraš svoju komunikacionu realnost i živiš život pun povezanosti i razumevanja.</p>
+                        
+                        <h3 class="text-2xl font-semibold mb-2">Pravljenje Ličnog Plana</h3>
+                        <p class="aleksandra-secondary-text">Da bi osigurala trajni napredak i nastavila da gradiš na temeljima koje si postavila, preporučujemo da kreiraš lični plan za primenu naučenog. Ovaj plan treba da bude fleksibilan i prilagođen tvojim potrebama i tempu. Odaberi 1-2 ključne tehnike iz programa koje ćeš redovno praktikovati i koje ti najviše rezonuju. Na primer, to može biti svakodnevno vežbanje aktivnog slušanja, postavljanje otvorenih pitanja, ili svesno korišćenje neverbalne komunikacije. Postavi merljive i realistične ciljeve za naredni period (npr. za sledećih 30, 60 ili 90 dana), prati svoj napredak i budi fleksibilna u prilagođavanju plana prema svojim potrebama i iskustvima. Doslednost je važnija od perfekcije; čak i mali koraci, kada se preduzimaju redovno, donose velike rezultate i stvaraju nezaustavljiv zamah. Neka tvoj plan uključuje i vreme za učenje i razvoj novih veština, jer je to ključ za dugoročni uspeh u komunikaciji.</p>
+                        
+                        <h3 class="text-2xl font-semibold mb-2">Preporuke za Dalje Učenje</h3>
+                        <p class="aleksandra-secondary-text">Svet komunikacije i ličnog razvoja je ogroman i neprestano se širi. Tvoje putovanje se ovde ne završava, već tek počinje. Da bi nastavila da rasteš i širiš svoje veštine, preporučujemo da produbiš svoje znanje i veštine. Razmisli o sledećim koracima:</p>
+                        <ul class="list-disc list-inside space-y-2 aleksandra-secondary-text">
+                            <li>**Knjige i kursevi o komunikacionim veštinama:** Za dublje razumevanje različitih aspekata komunikacije (npr. pregovaranje, javni nastup, rešavanje konflikata).</li>
+                            <li>**Studije o psihologiji i ljudskom ponašanju:** Za produbljivanje razumevanja univerzalnih principa i kako ih primeniti u svim oblastima života.</li>
+                            <li>**Pridruživanje online zajednicama ili grupama za vežbanje komunikacije:** Za podršku, inspiraciju, umrežavanje, razmenu iskustava i pronalaženje saradnika.</li>
+                            <li>**Rad sa koučem ili mentorom:** Za personalizovano vođstvo, podršku i ubrzanje tvog napretka, posebno kada naiđeš na specifične izazove.</li>
+                            <li>**Kontinuirano učenje:** Čitaj, slušaj podcaste, gledaj edukativne video snimke. Svet se menja, a ti moraš da rasteš sa njim.</li>
+                        </ul>
+                        <h3 class="text-2xl font-semibold mb-2">Zapamtite: Praksa Stvara Majstora</h3>
+                        <p class="aleksandra-secondary-text">Majstorstvo u komunikaciji je putovanje, a ne destinacija. Biće dana kada ćeš se osećati inspirisano i puno energije, i dana kada ćeš naići na izazove, sumnje ili prepreke. To je normalan deo procesa rasta i transformacije. Ključ je u strpljenju, doslednosti, upornosti i veri u sebe. Svaki korak, ma koliko mali, vodi te bliže ostvarenju tvog punog komunikacionog potencijala. Veruj u sebe, veruj u moć svog uma i nastavi da istražuješ beskrajne mogućnosti koje ti stoje na raspolaganju. Ti si kreator svoje realnosti, a Alhemija Konverzacije je tvoj vodič na tom putu. Želimo ti obilje uspeha, radosti i smislenih konverzacija na tvom predivnom putovanju!</p>
+                    </div>
+
+                    <div class="aleksandra-ritual-card p-6 rounded-lg mt-8">
+                        <h4 class="text-xl font-bold mb-3 aleksandra-accent">Završna poruka:</h4>
+                        <p class="aleksandra-secondary-text">Draga Aleksandra,</p>
+                        <p class="aleksandra-secondary-text">Hvala ti što si izabrala Alhemiju Konverzacije za svoje putovanje ka boljoj komunikaciji. Neka ti ovo znanje služi za tvoje najviše dobro i dobrobit svih oko tebe. Tvoja sposobnost da se povežeš sa drugima je neograničena. Verujemo u tebe!</p>
+                        <p class="aleksandra-secondary-text font-bold mt-4">Tvoj AI Asistent</p>
+                    </div>
+                    <div class="daily-emoji">
+                        🏆
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="message-box" class="message-box"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentDivs = document.querySelectorAll('.daily-content');
+            const navigation = document.getElementById('navigation');
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const messageBox = document.getElementById('message-box');
+            const completeButtons = document.querySelectorAll('.complete-button');
+            const progressBar = document.getElementById('course-progress-bar');
+            const dailyNotes = document.querySelectorAll('.daily-notes');
+            const resetButton = document.getElementById('reset-progress-button');
+
+            // --- Progress Tracking Functions ---
+            const totalSubmodules = completeButtons.length;
+            let completedSubmodules = 0;
+
+            function saveProgress() {
+                const progress = {};
+                completeButtons.forEach(button => {
+                    const submoduleId = button.dataset.submoduleId;
+                    progress[submoduleId] = button.classList.contains('completed');
+                });
+                localStorage.setItem('alhemijaKonverzacijeProgress', JSON.stringify(progress));
+
+                const notes = {};
+                dailyNotes.forEach(textarea => {
+                    notes[textarea.dataset.noteId] = textarea.value;
+                });
+                localStorage.setItem('alhemijaKonverzacijeNotes', JSON.stringify(notes));
+            }
+
+            function loadProgress() {
+                const savedProgress = JSON.parse(localStorage.getItem('alhemijaKonverzacijeProgress')) || {};
+                completedSubmodules = 0;
+                completeButtons.forEach(button => {
+                    const submoduleId = button.dataset.submoduleId;
+                    if (savedProgress[submoduleId]) {
+                        button.classList.add('completed');
+                        button.textContent = 'Završeno ✔';
+                        completedSubmodules++;
+                    }
+                });
+                updateProgressBar();
+
+                const savedNotes = JSON.parse(localStorage.getItem('alhemijaKonverzacijeNotes')) || {};
+                dailyNotes.forEach(textarea => {
+                    if (savedNotes[textarea.dataset.noteId]) {
+                        textarea.value = savedNotes[textarea.dataset.noteId];
+                    }
+                });
+            }
+
+            function updateProgressBar() {
+                const percentage = (completedSubmodules / totalSubmodules) * 100;
+                progressBar.style.width = `${percentage}%`;
+            }
+
+            function showMessage(message, duration = 2000) {
+                messageBox.textContent = message;
+                messageBox.classList.add('show');
+                setTimeout(() => {
+                    messageBox.classList.remove('show');
+                }, duration);
+            }
+
+            function navigate(targetId) {
+                contentDivs.forEach(div => {
+                    div.classList.add('hidden');
+                });
+                const targetDiv = document.getElementById(targetId);
+                if (targetDiv) {
+                    targetDiv.classList.remove('hidden');
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.target === targetId) {
+                        link.classList.add('active');
+                    }
+                });
+                window.scrollTo(0, 0);
+            }
+            
+            // --- Event Listeners ---
+            navigation.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (!link) return;
+                
+                e.preventDefault();
+                const targetId = link.dataset.target;
+                navigate(targetId);
+                
+                if (window.innerWidth < 768) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            });
+
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+
+            completeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (!button.classList.contains('completed')) {
+                        button.classList.add('completed');
+                        button.textContent = 'Završeno ✔';
+                        completedSubmodules++;
+                        updateProgressBar();
+                        saveProgress();
+                        showMessage('Lekcija završena!');
+                    } else {
+                        showMessage('Ova lekcija je već završena.');
+                    }
+                });
+            });
+
+            dailyNotes.forEach(textarea => {
+                textarea.addEventListener('input', saveProgress);
+            });
+
+            resetButton.addEventListener('click', () => {
+                // Using a custom message box instead of confirm()
+                const customConfirm = (message, onConfirm, onCancel) => {
+                    const confirmBox = document.createElement('div');
+                    confirmBox.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background-color: var(--tamno-siva);
+                        color: var(--tekst-boja-svetla);
+                        padding: 20px;
+                        border-radius: 10px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+                        z-index: 1001;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 15px;
+                        border: 1px solid var(--roze-tamno);
+                    `;
+                    confirmBox.innerHTML = `
+                        <p>${message}</p>
+                        <div style="display: flex; gap: 10px;">
+                            <button id="confirm-yes" style="background-color: var(--roze-primarno); color: var(--crna-pozadina); padding: 8px 15px; border-radius: 5px; border: none; cursor: pointer;">Da</button>
+                            <button id="confirm-no" style="background-color: #555; color: white; padding: 8px 15px; border-radius: 5px; border: none; cursor: pointer;">Ne</button>
+                        </div>
+                    `;
+                    document.body.appendChild(confirmBox);
+
+                    document.getElementById('confirm-yes').onclick = () => {
+                        onConfirm();
+                        document.body.removeChild(confirmBox);
+                    };
+                    document.getElementById('confirm-no').onclick = () => {
+                        if (onCancel) onCancel();
+                        document.body.removeChild(confirmBox);
+                    };
+                };
+
+                customConfirm('Da li ste sigurni da želite da resetujete sav napredak i beleške?', () => {
+                    localStorage.removeItem('alhemijaKonverzacijeProgress');
+                    localStorage.removeItem('alhemijaKonverzacijeNotes');
+                    loadProgress(); // Reload to reset UI
+                    dailyNotes.forEach(textarea => textarea.value = ''); // Clear textareas
+                    showMessage('Napredak i beleške su resetovani.');
+                    navigate('dashboard'); // Go back to dashboard
+                });
+            });
+            
+            // Initial load
+            loadProgress();
+            const initialTarget = window.location.hash ? window.location.hash.substring(1) : 'dashboard';
+            navigate(initialTarget);
+        });
+    </script>
+</body>
+</html>
